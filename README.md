@@ -162,7 +162,7 @@ optional arguments:
 
 
 ## Licensing and distribution
-This project is licensed under the MIT License &mdash; see [LICENSE.md](LICENSE.md) for details.
+This project is licensed under the MIT License &mdash; see [LICENSE](LICENSE) for details.
 
 
 ## Acknowledgments

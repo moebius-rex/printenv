@@ -1,24 +1,41 @@
 #!/usr/bin/env python
+#
+# Copyright 2021 Shay Gordon
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may not
+# use this file except in compliance with the License. You may obtain a copy
+# of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations
+# under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 """
-    Module that displays colorized environment variable names and values in
-    name order. Run with -h or --help command line option to print usage.
+Module that displays colorized environment variable names and values in name
+order. Run with -h or --help command line option to print usage.
 
-    Possible enhancements:
-      * Customizable ANSI color themes
-      * Generate HTML instead of plain text output
+Possible enhancements:
+  * Customizable ANSI color themes
+  * Generate HTML instead of plain text output
 """
-
 
 # make Python 3.x script compatible with python 2.7
 from __future__ import print_function
+import platform
 
 
 # source code tags
-__version__   = "1.0.0"
-__license__   = "GPL"
+__version__ = "1.0.0"
+__license__ = "GPL"
 __copyright__ = "Copyright 2018, Shay Gordon"
-__author__    = "Shay Gordon"
-__email__     = "shaygordon@mac.com"
+__author__ = "Shay Gordon"
+__email__ = "shaygordon@mac.com"
 
 
 # colors used in ANSI escape sequences
@@ -31,7 +48,6 @@ colors = {
 args = None
 
 # is script running under windows os?
-import platform
 windows = platform.system() == 'Windows'
 
 # default separator for multi-value variables
@@ -67,29 +83,29 @@ def parse_args():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=description)
     parser.add_argument('match', metavar='char-sequence', nargs='?',
-        help="print only those variable names/values that contain this \
+                        help="print only those variable names/values that contain this \
             character sequence")
     parser.add_argument('-c', '--clear', action='store_true',
-        help="clear terminal before printing")
+                        help="clear terminal before printing")
     parser.add_argument('-e', '--exact-match', action='store_true',
-        help="print only those variable names/values that exactly match the \
+                        help="print only those variable names/values that exactly match the \
             character sequence provided")
     parser.add_argument('-i', '--ignore', action='store_true',
-        help="ignore case in character sequence if supplied")
+                        help="ignore case in character sequence if supplied")
     parser.add_argument('-n', '--no-name-repeat', action='store_true',
-        help="when used with -s option, suppress printing of variable \
+                        help="when used with -s option, suppress printing of variable \
             name on all but first line of multiple value variables")
     parser.add_argument('-r', '--reset', action='store_true',
-        help="reset terminal before printing")
+                        help="reset terminal before printing")
     parser.add_argument('-s', '--split', metavar='sep',
-        type=str, nargs='?', const=sep,
-        help="split multiple value variables by supplied 'sep' (separator, " +
-            "default '" + sep + "') string and print one value per line")
+                        type=str, nargs='?', const=sep,
+                        help="split multiple value variables by supplied 'sep' (separator, " +
+                        "default '" + sep + "') string and print one value per line")
     parser.add_argument('-u', '--unformatted', action='store_true',
-        help="sort by name but disable all output formatting to produce \
+                        help="sort by name but disable all output formatting to produce \
             output similar to that of native operating system commands")
     parser.add_argument('-w', '--wait', action='store_true',
-        help="prompt user to exit script (useful when launching a terminal \
+                        help="prompt user to exit script (useful when launching a terminal \
             window to run this command)")
 
     global args
@@ -127,10 +143,10 @@ def search():
         for key, value in list(env.items()):
             if args.exact_match:
                 if key != args.match and value != args.match:
-                # key2 = '%s$' % key
-                # value2 = '%s$' % value
-                # print('key: ' + key2 + ', value: ' + value2)
-                # if not p.search(key2) and not p.search(value2):
+                    # key2 = '%s$' % key
+                    # value2 = '%s$' % value
+                    # print('key: ' + key2 + ', value: ' + value2)
+                    # if not p.search(key2) and not p.search(value2):
                     del env[key]
             else:
                 if not p.search(key) and not p.search(value):
@@ -165,7 +181,7 @@ def print_one(key, value, fmt):
                     bright = True if index == 0 else False
                     key = key if not args.no_name_repeat or index == 0 else ''
                     print(fmt % (esc('blue', bright), key, off,
-                        esc(fg), value, off))
+                                 esc(fg), value, off))
             return
     # print single value variable or unseparated multivalue variable
     print(fmt % (esc('blue'), key, off, esc(fg), value, off))
@@ -192,7 +208,7 @@ def print_env():
 
 def main():
     parse_args()
-    
+
     clear()
     print_env()
     wait()

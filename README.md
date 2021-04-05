@@ -18,7 +18,7 @@ This script should run on all devices that support Python 2.7 or 3.x interpreter
 You will need a supported [Python](https://www.python.org/downloads/) interpreter installed on your target device before running this script.
 
 Installing the script is as simple as downloading a copy of the
-[printenv.py](https://raw.githubusercontent.com/moebius-rex/printenv/master/printenv.py) Python script and making sure that it is executable. Unix users can do this using `curl` and `chmod` for example, for example:
+[printenv.py](https://raw.githubusercontent.com/moebius-rex/printenv/master/printenv.py) script and making sure that it is executable. Unix users can do this using `curl` and `chmod`, for example:
 
 <pre>
 <span style="color:#21D18B; font-weight:bold">user@host </span><span style="color:#3B8EEA; font-weight:bold">~ $ </span>curl https://raw.githubusercontent.com/moebius-rex/printenv/master/printenv.py > printenv.py
@@ -37,7 +37,7 @@ The software has had some testing on Windows, Linux and MacOS X devices. There a
 ## Usage Examples
 All usage examples below show ANSI color terminal output. For the sake of brevity, all output is simulated. 
 
-### Pretty-print all environment variables:
+### 1. Print all environment variables:
 <pre>
 <span style="color:#21D18B; font-weight:bold">user@host </span><span style="color:#3B8EEA; font-weight:bold">~ $ </span>./printenv.py
 <span class="name">    DISPLAY</span> <span style="color:#21D18B">:0</span>
@@ -53,7 +53,7 @@ All usage examples below show ANSI color terminal output. For the sake of brevit
 <span class="name">       _</span> <span style="color:#21D18B">./printenv.py</span>
 </pre>
 
-### Pretty-print variables containing multiple values separated by a semicolon on multiple lines, variable name on all lines:
+### 2. Print variables containing colon-separated values on multiple lines, variable name on all lines:
 <pre>
 <span style="color:#21D18B; font-weight:bold">user@host </span><span style="color:#3B8EEA; font-weight:bold">~ $ </span>./printenv.py -s
 <span style="color:#3B8EEA;">    DISPLAY</span> <span style="color:#21D18B">:0</span>
@@ -72,7 +72,7 @@ All usage examples below show ANSI color terminal output. For the sake of brevit
 <span style="color:#3B8EEA;">       _</span> <span style="color:#21D18B">./printenv.py</span>
 </pre>
 
-### Pretty-print variables containing multiple values separated by a semicolon on multiple lines, variable name on first line only:
+### 3. Print variables containing colon-separated values on multiple lines, variable name on first line only:
 <pre>
 <span style="color:#21D18B; font-weight:bold">user@host </span><span style="color:#3B8EEA; font-weight:bold">~ $ </span>./printenv.py -ns
 <span style="color:#3B8EEA;">    DISPLAY</span> <span style="color:#21D18B">:0</span>
@@ -91,7 +91,7 @@ All usage examples below show ANSI color terminal output. For the sake of brevit
 <span style="color:#3B8EEA;">       _</span> <span style="color:#21D18B">./printenv.py</span>
 </pre>
 
-### Pretty-print only variables whose name or value contains a user-defined character sequence:
+### 4. Print only variables whose name or value contains a user-defined character sequence:
 <pre>
 <span style="color:#21D18B; font-weight:bold">user@host </span><span style="color:#3B8EEA; font-weight:bold">~ $ </span>./printenv.py PATH -s
 <span style="color:#3B8EEA;"><span style="color:#3B8EEA;">PATH</span> <span style="color:#26B8D8">/home/user/bin</span>
@@ -167,4 +167,4 @@ This project is licensed under the MIT License &mdash; see [LICENSE](LICENSE) fo
 
 ## Acknowledgments
 * [Bill Joy](https://en.wikipedia.org/wiki/Bill_Joy) for his original 1979 implementation of `printenv` for [BSD](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution)
-* Tracy and Paul for their unwavering support
+* Tracy and Paul for their support

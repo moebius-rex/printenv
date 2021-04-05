@@ -50,7 +50,7 @@ All usage examples below show ANSI color terminal output. For the sake of brevit
 <span class="name"">       TERM</span> <span style="color:#21D18B">xterm-256color</span>
 <span class="name">       USER</span> <span style="color:#21D18B">user</span>
 <span class="name">VTE_VERSION</span> <span style="color:#FFFFFF">4205</span>
-<span class="name">       _</span> <span style="color:#21D18B">./printenv.py</span>
+<span class="name">          _</span> <span style="color:#21D18B">./printenv.py</span>
 </pre>
 
 ### 2. Print variables containing colon-separated values on multiple lines, variable name on all lines:
@@ -69,7 +69,7 @@ All usage examples below show ANSI color terminal output. For the sake of brevit
 <span style="color:#3B8EEA;">       TERM</span> <span style="color:#21D18B">xterm-256color</span>
 <span style="color:#3B8EEA;">       USER</span> <span style="color:#21D18B">user</span>
 <span style="color:#3B8EEA;">VTE_VERSION</span> <span style="color:#FFFFFF">4205</span>
-<span style="color:#3B8EEA;">       _</span> <span style="color:#21D18B">./printenv.py</span>
+<span style="color:#3B8EEA;">          _</span> <span style="color:#21D18B">./printenv.py</span>
 </pre>
 
 ### 3. Print variables containing colon-separated values on multiple lines, variable name on first line only:
@@ -88,7 +88,7 @@ All usage examples below show ANSI color terminal output. For the sake of brevit
 <span style="color:#3B8EEA;">       TERM</span> <span style="color:#21D18B">xterm-256color</span>
 <span style="color:#3B8EEA;">       USER</span> <span style="color:#21D18B">user</span>
 <span style="color:#3B8EEA;">VTE_VERSION</span> <span style="color:#FFFFFF">4205</span>
-<span style="color:#3B8EEA;">       _</span> <span style="color:#21D18B">./printenv.py</span>
+<span style="color:#3B8EEA;">          _</span> <span style="color:#21D18B">./printenv.py</span>
 </pre>
 
 ### 4. Print only variables whose name or value contains a user-defined character sequence:

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 #
 # Copyright 2021 Shay Gordon
 #
@@ -25,8 +25,7 @@ Possible enhancements:
   * Generate HTML instead of plain text output
 """
 
-# make Python 3.x script compatible with python 2.7
-from __future__ import print_function
+# to discover what type of platform we're running on
 import platform
 
 

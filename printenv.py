@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 #
 # Copyright 2021 Shay Gordon
 #
@@ -14,27 +14,23 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 #
-# SPDX-License-Identifier: Apache-2.0
-#
 """
-Module that displays colorized environment variable names and values in name
-order. Run with -h or --help command line option to print usage.
+Display colorized environment variable names and values in name order.
+Run with -h or --help command line option to print usage.
+
+Available on GiHub at https://github.com/moebius-rex/printenv.
 
 Possible enhancements:
   * Customizable ANSI color themes
   * Generate HTML instead of plain text output
 """
 
+__author__ = "Shay Gordon"
+__email__ = "moebius.le.roi@gmail.com"
+
+
 # to discover what type of platform we're running on
 import platform
-
-
-# source code tags
-__version__ = "1.0.0"
-__license__ = "GPL"
-__copyright__ = "Copyright 2018, Shay Gordon"
-__author__ = "Shay Gordon"
-__email__ = "shaygordon@mac.com"
 
 
 # colors used in ANSI escape sequences
@@ -52,12 +48,12 @@ windows = platform.system() == 'Windows'
 # default separator for multi-value variables
 sep = ';' if windows else ':'
 
-# turns off ANSI escape sequences, modified by parse_args()
+# turn off ANSI escape sequences, modified by parse_args()
 off = '\033[0m'
 
 
 def esc(color, bright=True):
-    """Returns ANSI escape sequence for supplied color and brightness."""
+    """Return ANSI escape sequence for supplied color and brightness."""
     return '' if windows or args.unformatted else \
         '\033[%dm' % (colors[color] + (90 if bright else 30))
 
@@ -90,7 +86,7 @@ def parse_args():
                         help="print only those variable names/values that exactly match the \
             character sequence provided")
     parser.add_argument('-i', '--ignore', action='store_true',
-                        help="ignore case in character sequence if supplied")
+                        help="ignore case in character sequence if provided")
     parser.add_argument('-n', '--no-name-repeat', action='store_true',
                         help="when used with -s option, suppress printing of variable \
             name on all but first line of multiple value variables")
@@ -115,7 +111,7 @@ def parse_args():
 
 
 def clear():
-    """Clears or resets terminal based on command line arguments."""
+    """Clear or reset terminal based on command line arguments."""
     if args.reset:
         print('\033c', end='')
     elif args.clear:
@@ -123,14 +119,14 @@ def clear():
 
 
 def wait():
-    """Waits for user to press enter before exiting script."""
+    """Wait for user to press enter before exiting script."""
     if args.wait:
         input('\nPress return to exit')
 
 
 def search():
     """
-    Returns a dictionary of all environment variable names and/or values
+    Return a dictionary of all environment variable names and/or values
     containing the character sequence supplied on the command line, or all
     environment variables if no sequence was provided.
     """
@@ -156,7 +152,7 @@ def search():
 
 def print_one(key, value, fmt):
     """
-    Prints one environment variable name and value(s). Output format is
+    Print one environment variable name and value(s). Output format is
     controlled by the '--split' and '--key' command line arguments.
     """
     # select value color
@@ -188,7 +184,7 @@ def print_one(key, value, fmt):
 
 def print_env():
     """
-    Prints colorized environment variables and values in alphabetical order.
+    Print colorized environment variables and values in alphabetical order.
     Variable values have different colors depending on whether they are
     integers or start with a forward slash.
     """
